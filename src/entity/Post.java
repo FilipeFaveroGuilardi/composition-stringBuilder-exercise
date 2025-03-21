@@ -65,9 +65,7 @@ public class Post {
 
     @Override
     public String toString() {
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss");
-
-        String commentsToString = comments.stream().toString();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 
         StringBuilder stringBuilder = new StringBuilder();
 
@@ -79,8 +77,12 @@ public class Post {
                 .append("\n")
                 .append(content)
                 .append("\n")
-                .append("Comments:\n")
-                .append(commentsToString);
+                .append("Comments:\n");
+
+        for (Comment comment : comments) {
+            stringBuilder.append(comment)
+                    .append("\n");
+        }
 
         return stringBuilder.toString();
     }
